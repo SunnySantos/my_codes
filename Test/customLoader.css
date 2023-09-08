@@ -1,0 +1,125 @@
+#custom-loader .green-abs, #custom-loader .blue-abs {
+    position: absolute;
+}
+
+#custom-loader .green-abs {
+    bottom: 0;
+}
+
+#custom-loader .blue-abs {
+    top: 0;
+}
+
+#custom-loader .name-wrap {
+    display: flex;
+    gap: 11px;
+    padding: 10%;
+}
+
+#custom-loader {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#custom-loader.loaded {
+    pointer-events: none;
+}
+
+#custom-loader .green,
+#custom-loader .blue {
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 200ms;
+}
+
+#custom-loader:not(.loaded) :is(.green, .blue, .bgRight, .bgLeft) {
+    animation-play-state: paused;
+}
+
+#custom-loader .green {
+    /*             animation-name: greenAnim; */
+}
+
+#custom-loader .blue {
+    /*             animation-name: blueAnim; */
+}
+
+@keyframes greenAnim {
+    0% {
+        transform: translate(0vw, 0vw);
+    }
+
+    100% {
+        transform: translate(-100vw, 150px);
+    }
+}
+
+@keyframes blueAnim {
+    0% {
+        transform: translate(0vw, 0vw);
+    }
+
+    100% {
+        transform: translate(100vw, -150px);
+    }
+}
+
+@keyframes bgLeft {
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes bgRight {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+
+#custom-loader .c-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: row;
+}
+
+#custom-loader .bgLeft, #custom-loader .bgRight {
+    width: 50%;
+    background-image: url(https://wordpress-707832-3467433.cloudwaysapps.com/wp-content/uploads/2023/04/Loader-Image-Left.jpg);
+    background-size: cover;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1000ms;
+    background-repeat: no-repeat !important;
+    background-color: #0D153B;
+    background-position-y: top;
+
+}
+
+#custom-loader .bgLeft {
+    background-position-x: calc(100% + 1px);
+    animation-name: bgLeft;
+}
+
+#custom-loader .bgRight {
+    background-position-x: 0;
+    animation-name: bgRight;
+    background-image: url(https://wordpress-707832-3467433.cloudwaysapps.com/wp-content/uploads/2023/04/Loader-Image-Right.jpg);
+
+}

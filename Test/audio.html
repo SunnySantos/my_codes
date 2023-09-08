@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        jQuery(function ($) {
+            $(document).ready(function () {
+                setTimeout(function () {
+                    var audioSources = [
+                        'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_BASS_Cinematic_Reese.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_Bass_Stampede.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_Bass_Powerful_Reese.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PAD_AirSine.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PAD_Depths.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PAD_Sad_Organ.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PLUCK_Simplicity.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PLUCK_Omen.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_PLUCK_Remnants.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_Key_Splosh.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_KEY_Strange_Beauty.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_KEY_Afterlife.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_LEAD_Vocal.mp3?v=1655513983', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_LEAD_Stars.mp3?v=1655513981', 'https://cdn.shopify.com/s/files/1/0562/3752/2978/files/FLTips_Paradigm_-_SYNTH_Highbeams.mp3?v=1655513981'
+                    ];
+
+                    var ws = [];
+                    for (var i = 0; i < audioSources.length; i++) {
+                        var t = WaveSurfer.create({
+                            container: '#waveform' + (i + 1),
+                            waveColor: '#f0f0f0',
+                            progressColor: '#ff822e',
+                            height: '40',
+                            hideScrollbar: 'true',
+                            responsive: 'true',
+                            cursorWidth: 0,
+
+                        });
+                        jQuery('#play-btn' + (i + 1)).attr('class', 'fas fa-play');
+                        (function (i) {
+                            t.on('finish', function () {
+                                jQuery('#play-btn' + (i + 1)).attr('class', 'fas fa-play');
+                            });
+                            t.on('play', function () {
+                                jQuery('#play-btn' + (i + 1)).attr('class', 'fas fa-pause');
+                            });
+                            t.on('pause', function () {
+                                jQuery('#play-btn' + (i + 1)).attr('class', 'fas fa-play');
+                            });
+                            jQuery('#play-btn' + (i + 1)).on('click', function () {
+                                for (var j = 0; j < audioSources.length; j++) {
+                                    if (i != j && ws[j].isPlaying()) {
+                                        ws[j].stop();
+                                    }
+                                }
+                                ws[i].playPause();
+                            });
+                        })(i);
+                        ws.push(t);
+                    }
+
+                    for (var k = 0; k < audioSources.length; k++) {
+                        ws[k].load(audioSources[k]);
+                    }
+
+
+                    function AudioWaveSurfer(audioSources = []) {
+                        var ws = [];
+                        for (var i = 0; i < audioSources.length; i++) {
+                            var audio = WaveSurfer.create({
+                                container: "#waveform" + (i + 1),
+                                waveColor: "#636363",
+                                progressColor: "#8357FF",
+                                height: "40",
+                                hideScrollbar: "true",
+                                responsive: "true",
+                                cursorWidth: 0,
+                            });
+                            jQuery("#play-btn" + (i + 1)).attr("class", "fas fa-play");
+                            (function (i) {
+                                audio.on("finish", function () {
+                                    jQuery("#play-btn" + (i + 1)).attr("class", "fas fa-play");
+                                });
+                                audio.on("play", function () {
+                                    jQuery("#play-btn" + (i + 1)).attr("class", "fas fa-pause");
+                                });
+                                audio.on("pause", function () {
+                                    jQuery("#play-btn" + (i + 1)).attr("class", "fas fa-play");
+                                });
+                                jQuery("#play-btn" + (i + 1)).on("click", function () {
+                                    for (var j = 0; j < audioSources.length; j++) {
+                                        if (i != j && ws[j].isPlaying()) {
+                                            ws[j].stop();
+                                        }
+                                    }
+                                    ws[i].playPause();
+                                });
+                            })(i);
+                            ws.push(audio);
+                        }
+
+                        for (var k = 0; k < audioSources.length; k++) {
+                            ws[k].load(audioSources[k]);
+                        }
+                    }
+
+                });
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+
+
+    
+    <div class="audio">
+        <div id="controls1" class="controls">
+            <div id="play-btn1" class="play-btn">
+            </div>
+        </div>
+        <div id="waveform1" class="waveform"></div>
+    </div>
+
+</body>
+
+</html>

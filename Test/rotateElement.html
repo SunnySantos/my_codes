@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 577px;
+            border-radius: 190px;
+            border: 1px solid black;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item-wrapper {
+            position: relative;
+            width: calc(100% + 30px);
+            height: 37%;
+            margin: -15px 0;
+        }
+
+        .item {
+            height: 30px;
+            width: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            transform-origin: 0px 215px;
+            animation: anim 2s linear infinite;
+        }
+
+        .item-wrapper:last-child .item {
+            transform-origin: 0px 215px;
+            animation: anim 2s linear infinite;
+        }
+
+
+        @keyframes anim {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="item-wrapper">
+            <div class="item"></div>
+        </div>
+        <div class="item-wrapper">
+            <div class="item"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

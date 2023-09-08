@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            word-break: break-all;
+            transition: 1s ease-in-out;
+        }
+
+        section {
+            height: 80dvh;
+            width: 100dvw;
+            position: relative;
+        }
+
+        section:nth-child(1n) {
+            background-color: aqua;
+            color: black;
+        }
+
+        section:nth-child(2n) {
+            background-color: black;
+            color: white;
+        }
+
+
+        h2 {
+            position: sticky;
+            top: 0;
+            font-size: 12px;
+        }
+
+        .highlight {
+            background-color: gray !important;
+            color: black !important;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Section 1</h2>
+        <p></p>
+    </section>
+    <section>
+        <h2>Section 2</h2>
+        <p></p>
+    </section>
+    <section>
+        <h2>Section 3</h2>
+        <p></p>
+    </section>
+    <section>
+        <h2>Section 4</h2>
+        <p></p>
+    </section>
+    <script>
+        window.addEventListener("scroll", () => {
+            document.querySelectorAll("section").forEach(section => {
+                const boundRect = section.getBoundingClientRect()
+                section.querySelector("h2").textContent = JSON.stringify(boundRect.toJSON())
+                section.querySelector("p").textContent = innerHeight / 2
+                
+                if (Math.abs(boundRect.y) < innerHeight / 2) {
+                    section.classList.add("highlight");
+                } else {
+                    section.classList.remove("highlight");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

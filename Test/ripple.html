@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .canvasWrap {
+            height: 100dvh;
+            width: 100dvw;
+        }
+
+        .blue .custom-particles {
+            background: linear-gradient(-45deg, #003765, #91DCE9, #003765, #91DCE9);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body class="blue" id="section-height">
+    <div class="canvasWrap">
+        <canvas class="custom-particles" id="canvas"></canvas>
+    </div>
+
+
+    <script>
+        setTimeout(() => {
+            const _canvas = document.querySelector('.blue .custom-particles')
+            const _c = _canvas.getContext('2d')
+            let _cw = _canvas.width = innerWidth
+            let _ch = _canvas.height = document.querySelector("#section-height").getBoundingClientRect().height
+            var _hue = 0
+
+            let _particles = []
+
+            let _ctr = 0
+
+            class _Particle {
+                constructor({
+                    x, y, radius, color
+                }) {
+                    this.x = x
+                    this.y = y
+                    this.radiusMax = radius
+                    this.radius = 45
+                    this.color = color
+                    this.lifespan = 15
+                }
+
+                draw() {
+                    _c.save()
+                    _c.beginPath()
+                    _c.fillStyle = this.color
+                    _c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+                    _c.fill()
+                    _c.closePath()
+                    _c.restore()
+                }
+
+                update() {
+                    this.draw()
+
+                    if (this.lifespan-- <= 0) {
+                        this.radius -= 2
+                    } else if (this.radius < this.radiusMax) {
+                        this.radius += 5
+                    }
+                }
+            }
+
+            function _init() {
+                _particles = []
+            }
+
+            function _handleResize() {
+                _cw = _canvas.width = innerWidth
+                _ch = _canvas.height = document.querySelector("#section-height").getBoundingClientRect().height
+
+                _init()
+            }
+
+            window.addEventListener('resize', _handleResize)
+
+            _canvas.addEventListener('mousemove', function (e) {
+                const { offsetX, offsetY } = e
+
+                const gradient = _c.createLinearGradient(0, 0, _cw, _ch)
+                gradient.addColorStop(0, '#E8D5BD')
+                gradient.addColorStop(0.5, '#C7E0CE')
+                gradient.addColorStop(1, '#E8D5BD')
+
+                _particles.push(new _Particle({
+                    x: offsetX,
+                    y: offsetY,
+                    radius: 50,
+                    color: gradient
+                }))
+            })
+
+
+            function _animation() {
+                requestAnimationFrame(_animation)
+                _c.clearRect(0, 0, _cw, _ch); // Clear canvas instead of filling with color
+
+                _particles.forEach(p => {
+                    if (p.radius > 0) {
+                        p.update()
+                    }
+                })
+            }
+
+            _init()
+            _animation()
+        }, 1000)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+/* https://digitalagency.wptemplatehub.com/ */
+.cstm-testi .swiper-slide {
+    overflow: visible;
+}
+
+.cstm-testi .swiper-slide.swiper-slide-next {
+    z-index: 1;
+}
+
+.cstm-testi .swiper-slide .elementor-testimonial__content{
+    background-image: linear-gradient(#FDD79654, #F0B3FF2E);
+}
+
+.cstm-testi .swiper-slide:not(.swiper-slide-next) {
+    opacity: 0.3;
+}
+
+.cstm-testi .swiper-slide:not(.swiper-slide-next) .elementor-testimonial__content{
+    margin: 0 -16px;
+    transform: scale(.9);
+}
+
+.cstm-testi .swiper-slide.swiper-slide-next .elementor-testimonial__content{
+    margin: 0 -50px;
+}

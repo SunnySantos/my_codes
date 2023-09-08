@@ -1,0 +1,6 @@
+p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

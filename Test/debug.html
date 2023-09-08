@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.addEventListener('load', function () {
+            var section = document.querySelector('#scroll-section');
+            if (section) {
+                var container = document.querySelector('#sticky-container');
+                var tabs = document.querySelector('#custom-tabs')
+
+                window.onscroll = () => {
+                    var headingRect = container.getBoundingClientRect();
+                    var top = headingRect.top - section.getBoundingClientRect().top
+                    if (top < 300) {
+                        tabs.querySelectorAll('[data-tab="1"]').forEach(tab => tab.click())
+                        activeTitle(0)
+                    } else if (top >= 300 && top < 900) {
+                        tabs.querySelectorAll('[data-tab="2"]').forEach(tab => tab.click())
+                        activeTitle(1)
+                    } else {
+                        tabs.querySelectorAll('[data-tab="3"]').forEach(tab => tab.click())
+                        activeTitle(2)
+                    }
+                }
+
+                function activeTitle(activeIndex) {
+                    var titles = document.querySelectorAll('.custom-tab-title .elementor-heading-title')
+                    titles.forEach(title => title.style.fontWeight = 400)
+                    titles[activeIndex].style.fontWeight = 700
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

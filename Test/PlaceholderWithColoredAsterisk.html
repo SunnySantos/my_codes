@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #formform label.elementor-field-label {
+            position: absolute;
+            left: 40px;
+            top: 18px;
+            cursor: initial;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: calc(100% - 80px);
+        }
+
+        #formform input::-webkit-input-placeholder,
+        #formform textarea::-webkit-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input::-moz-placeholder,
+        #formform textarea::-moz-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input:-ms-input-placeholder,
+        #formform textarea:-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+
+        #formform input::-ms-input-placeholder,
+        #formform textarea::-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input::-webkit-input-placeholder,
+        #formform textarea::-webkit-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input::-moz-placeholder,
+        #formform textarea::-moz-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input:-ms-input-placeholder,
+        #formform textarea:-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input::-ms-input-placeholder,
+        #formform textarea::-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform input::placeholder,
+        #formform textarea::placeholder {
+            opacity: 0 !important;
+        }
+
+        #formform textarea {
+            border-radius: 5px;
+        }
+
+        #formform input:not(:-moz-placeholder-shown)+label,
+        #formform textarea:not(:-moz-placeholder-shown)+label {
+            opacity: 0 !important;
+        }
+
+        #formform input:not(:-ms-input-placeholder)+label,
+        #formform textarea:not(:-ms-input-placeholder)+label {
+            opacity: 0 !important;
+        }
+
+        #formform input:not(:-moz-placeholder-shown)+label,
+        #formform textarea:not(:-moz-placeholder-shown)+label {
+            opacity: 0 !important;
+        }
+
+        #formform input:not(:-ms-input-placeholder)+label,
+        #formform textarea:not(:-ms-input-placeholder)+label {
+            opacity: 0 !important;
+        }
+
+        #formform input:not(:placeholder-shown)+label,
+        #formform textarea:not(:placeholder-shown)+label {
+            opacity: 0 !important;
+        }
+
+        #formform input+label,
+        #formform textarea+label {
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            -moz-user-select: none;
+            user-select: none;
+            /* Standard syntax */
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('#formform .elementor-field-group:not(.e-form__buttons)').forEach(group => {
+                group.append(group.querySelector('label'))
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="elementor-element elementor-element-756a058 elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile elementor-button-align-stretch elementor-widget elementor-widget-form"
+        data-id="756a058" data-element_type="widget" id="formform"
+        data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
+        data-widget_type="form.default">
+        <div class="elementor-widget-container">
+            <form class="elementor-form" method="post" name="Contact Form">
+                <input type="hidden" name="post_id" value="10">
+                <input type="hidden" name="form_id" value="756a058">
+                <input type="hidden" name="referer_title" value="What we do">
+
+                <input type="hidden" name="queried_id" value="10">
+
+                <div class="elementor-form-fields-wrapper elementor-labels-above">
+                    <div
+                        class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
+
+                        <input size="1" type="text" name="form_fields[name]" id="form-field-name"
+                            class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Your Name *"
+                            value="">
+                        <label for="form-field-name" class="elementor-field-label">
+                            Name </label>
+                    </div>
+                    <div
+                        class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-phone elementor-col-100 elementor-field-required elementor-mark-required">
+
+                        <input size="1" type="tel" name="form_fields[phone]" id="form-field-phone"
+                            class="elementor-field elementor-size-sm  elementor-field-textual"
+                            placeholder="Phone Number *" required="required" aria-required="true"
+                            pattern="[0-9()#&amp;+*-=.]+"
+                            title="Only numbers and phone characters (#, -, *, etc) are accepted." value="">
+
+                        <label for="form-field-phone" class="elementor-field-label">
+                            Phone Number </label>
+                    </div>
+                    <div
+                        class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required elementor-mark-required">
+
+                        <input size="1" type="email" name="form_fields[email]" id="form-field-email"
+                            class="elementor-field elementor-size-sm  elementor-field-textual"
+                            placeholder="Email Address *" required="required" aria-required="true">
+                        <label for="form-field-email" class="elementor-field-label">
+                            Email </label>
+                    </div>
+                    <div
+                        class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
+
+                        <textarea class="elementor-field-textual elementor-field  elementor-size-sm"
+                            name="form_fields[message]" id="form-field-message" rows="10"
+                            placeholder="Your Message"></textarea> <label for="form-field-message"
+                            class="elementor-field-label">
+                            Message </label>
+                    </div>
+                    <div
+                        class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+                        <button type="submit" class="elementor-button elementor-size-sm">
+                            <span>
+                                <span class=" elementor-button-icon">
+                                </span>
+                                <span class="elementor-button-text">Submit now</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
