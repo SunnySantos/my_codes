@@ -1,0 +1,11 @@
+.cup-icon .elementor-icon-list-text:after {
+    content: '';
+    background: url('/wp-content/uploads/2022/12/Cup.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 18px;
+    width: 18px;
+    margin: 0 0 -5px 5px;
+    display: inline-block;
+}

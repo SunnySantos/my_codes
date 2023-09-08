@@ -1,0 +1,31 @@
+jQuery(document).ready(function($) {
+  if ($(window).width() > 768) {
+    var maxHeight = 0;
+    $('.elementor-cta--layout-image-above .elementor-widget-container').each(function() {
+      if ($(this).height() > maxHeight) {
+        maxHeight = $(this).height();
+      }
+    });
+    $('.elementor-cta--layout-image-above .elementor-widget-container').height(maxHeight);
+  }
+});
+
+
+------------------
+
+
+jQuery(function($) {
+    $(document).ready(function() {
+        $('.we-build-slider-col .we-build-slider').each(function(){
+            var maxHeight = -1;
+            
+            $('.we-build-slider-col .we-build-slider .elementor-widget-container').each(function() {
+                maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+            });
+            
+            $('.we-build-slider-col .we-build-slider .elementor-widget-container').each(function() {
+                $(this).height(maxHeight);
+            });
+        });  
+    });
+});

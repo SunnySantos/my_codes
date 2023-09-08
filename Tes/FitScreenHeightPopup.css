@@ -1,0 +1,15 @@
+.elementor-location-popup {
+    height: 100%;
+}
+
+.elementor-container,
+.elementor-row,
+.elementor-inner,
+.elementor-section-wrap,
+.elementor-section{
+    height: inherit;
+}
+
+.elementor-widget-wrap {
+    align-content: space-between;
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .publications-grid {
+            display: grid;
+        }
+
+        .publications-grid-item {
+            padding: 37px;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+
+        .publications-top {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        .publications-title {
+            font-family: 'Roboto';
+            font-weight: 700;
+            line-height: 1.3em;
+            color: #4E958F;
+        }
+
+        .publications-post-date {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            color: #4E958F;
+        }
+
+        .publications-featured-image {
+            max-width: 100%;
+            width: max-content;
+        }
+
+        .publications-content {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.625em;
+            color: #141617;
+        }
+
+        .publications-permalink {
+            font-family: 'Inter';
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2em;
+            text-decoration: none;
+            color: #4E958F;
+        }
+
+        .publications-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .publications-grid-item:nth-child(4),
+        .publications-grid-item:nth-child(8),
+        .publications-grid-item:nth-child(12),
+        .publications-grid-item:nth-child(16),
+        .publications-grid-item:nth-child(20),
+        .publications-grid-item:nth-child(24),
+        .publications-grid-item:nth-child(28),
+        .publications-grid-item:nth-child(32),
+        .publications-grid-item:nth-child(36),
+        .publications-grid-item:nth-child(40),
+        .publications-grid-item:nth-child(44),
+        .publications-grid-item:nth-child(48),
+        .publications-grid-item:nth-child(52) {
+            border-right: none;
+        }
+
+        @media only screen and (max-width: 1366px) {
+            .publications-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .publications-grid-item:nth-child(4),
+            .publications-grid-item:nth-child(8),
+            .publications-grid-item:nth-child(12),
+            .publications-grid-item:nth-child(16),
+            .publications-grid-item:nth-child(20),
+            .publications-grid-item:nth-child(24),
+            .publications-grid-item:nth-child(28),
+            .publications-grid-item:nth-child(32),
+            .publications-grid-item:nth-child(36),
+            .publications-grid-item:nth-child(40),
+            .publications-grid-item:nth-child(44),
+            .publications-grid-item:nth-child(48),
+            .publications-grid-item:nth-child(52) {
+                border-right: 1px solid black;
+            }
+
+            .publications-grid-item:nth-child(3),
+            .publications-grid-item:nth-child(6),
+            .publications-grid-item:nth-child(9),
+            .publications-grid-item:nth-child(12),
+            .publications-grid-item:nth-child(15),
+            .publications-grid-item:nth-child(18),
+            .publications-grid-item:nth-child(21),
+            .publications-grid-item:nth-child(24),
+            .publications-grid-item:nth-child(27),
+            .publications-grid-item:nth-child(30),
+            .publications-grid-item:nth-child(33),
+            .publications-grid-item:nth-child(36),
+            .publications-grid-item:nth-child(39) {
+                border-right: none;
+            }
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .publications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .publications-grid-item:nth-child(3),
+            .publications-grid-item:nth-child(6),
+            .publications-grid-item:nth-child(9),
+            .publications-grid-item:nth-child(12),
+            .publications-grid-item:nth-child(15),
+            .publications-grid-item:nth-child(18),
+            .publications-grid-item:nth-child(21),
+            .publications-grid-item:nth-child(24),
+            .publications-grid-item:nth-child(27),
+            .publications-grid-item:nth-child(30),
+            .publications-grid-item:nth-child(33),
+            .publications-grid-item:nth-child(36),
+            .publications-grid-item:nth-child(39) {
+                border-right: 1px solid black;
+            }
+
+            .publications-grid-item:nth-child(2),
+            .publications-grid-item:nth-child(4),
+            .publications-grid-item:nth-child(6),
+            .publications-grid-item:nth-child(8),
+            .publications-grid-item:nth-child(10),
+            .publications-grid-item:nth-child(12),
+            .publications-grid-item:nth-child(14),
+            .publications-grid-item:nth-child(16),
+            .publications-grid-item:nth-child(18),
+            .publications-grid-item:nth-child(20),
+            .publications-grid-item:nth-child(22),
+            .publications-grid-item:nth-child(24),
+            .publications-grid-item:nth-child(26) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .publications-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .publications-top {
+                grid-template-columns: 1fr;
+                align-items: left;
+            }
+
+            .publications-left {
+                grid-row: 2;
+            }
+
+            .publications-grid-item {
+                border-right: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='publications-grid'>
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+
+        <div class='publications-grid-item'>
+            <div class='publications-top'>
+                <div class='publications-left'>
+                    <h3 class='publications-title'>Lorem Ipsum Submission 5</h3>
+                    <p class='publications-post-date'>January 2023</p>
+                </div>
+                <div class='publications-right'>
+                    <img class='publications-featured-image'
+                        src='http://143.198.82.206/wp-content/uploads/2023/01/Mask-Group-29.png' alt=''>
+                </div>
+            </div>
+            <div class='publications-bottom'>
+                <p class='publications-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor id.</p>
+                <a href='#' class='publications-permalink'>View PDF</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+.marquee1 .elementor-widget-container, .marquee2 .elementor-widget-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee1 .elementor-heading-title {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+    transform: translate3d(calc(-25% + 20vw), 0, 0);
+    -webkit-animation: marquee1 40s linear infinite;
+    animation: marquee1 40s linear infinite;
+}
+
+.marquee2 .elementor-heading-title {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+    transform: translate3d(calc(-25% + 20vw), 0, 0);
+    -webkit-animation: marquee2 40s linear infinite;
+    animation: marquee2 40s linear infinite;
+}
+
+.marquee1 span, .marquee2 span {
+    padding: 0 2vw;
+}
+
+@-webkit-keyframes marquee1 {
+    0% {
+        -webkit-transform: translate3d(calc(-50% + 20vw), 0, 0);
+        transform: translate3d(calc(-50% + 20vw), 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+        transform: translate3d(calc(-25% + 20vw), 0, 0);
+    }
+}
+
+@keyframes marquee1 {
+    0% {
+        -webkit-transform: translate3d(calc(-50% + 20vw), 0, 0);
+        transform: translate3d(calc(-50% + 20vw), 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+        transform: translate3d(calc(-25% + 20vw), 0, 0);
+    }
+}
+
+@-webkit-keyframes marquee2 {
+    0% {
+        -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+        transform: translate3d(calc(-25% + 20vw), 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(calc(-50% + 20vw), 0, 0);
+        transform: translate3d(calc(-50% + 20vw), 0, 0);
+    }
+}
+
+@keyframes marquee2 {
+    0% {
+        -webkit-transform: translate3d(calc(-25% + 20vw), 0, 0);
+        transform: translate3d(calc(-25% + 20vw), 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(calc(-50% + 20vw), 0, 0);
+        transform: translate3d(calc(-50% + 20vw), 0, 0);
+    }
+}

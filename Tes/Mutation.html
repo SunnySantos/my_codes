@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="some-id">Hello</h1>
+    <button>Click</button>
+    
+    <script>
+        
+
+        // Select the node that will be observed for mutations
+        const targetNode = document.getElementById('some-id');
+
+        // Options for the observer (which mutations to observe)
+        var config = { childList: true };
+
+        // Callback function to execute when mutations are observed
+        var callback = function(mutationsList, observer) {
+            for(var mutation of mutationsList) {
+                if (mutation.type == 'childList') {
+                    console.log('watch paragraph has changed or child has been added/removed');
+                }
+            }
+        };
+
+        // Create an observer instance linked to the callback function
+        var observer = new MutationObserver(callback);
+
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
+
+        const btn = document.querySelector('button');
+        btn.addEventListener("click", () => {
+            targetNode.innerText = 'World';
+        })
+    </script>
+</body>
+</html>

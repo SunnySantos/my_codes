@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map</title>
+    
+</head>
+<body>
+	<style type="text/css">
+        body {
+            margin: 0;
+        }
+        .map {
+            height: 895px;
+            width: 100%;
+        }
+        .cstm-map-group {
+            display: none;
+        }
+    </style>
+    <div id="map" class="map"></div>
+    <div class="cstm-map-group">
+    
+        <div class="pins-group group-1">
+			<button class="accordion">
+				<div class="logo-pins">
+					<img src="https://natureshair.digitalrecipe.dev/wp-content/uploads/2023/01/community.png">
+						<h4>Community</h4>
+					</div>
+			</button>
+			<ul class="cstm-map-list">
+				<div class="panel">
+					<li maps-direction="https://goo.gl/maps/sZfFw9rP7zR6DptR7" maps-lat="-33.9185579" maps-long="151.0349248" maps-group="group-1">
+						<p>Bankstown</p>
+					</li>
+				</div>
+				<div class="panel">
+					<li maps-direction="https://goo.gl/maps/v7GBDnvGEWkhViHr5" maps-lat="-33.814968" maps-long="151.003509" maps-group="group-1">
+						<p>Parramatta</p>
+					</li>
+				</div>
+				<div class="panel">
+					<li maps-direction="https://goo.gl/maps/QfvTp1Cq1gMEnFXM7" maps-lat="-33.7699" maps-long="150.908714" maps-group="group-1">
+						<p>Blacktown</p>
+					</li>
+				</div>
+				<div class="panel">
+					<li maps-direction="https://goo.gl/maps/VAjakZjUdZVLjrL78" maps-lat="-33.898289" maps-long="151.176568" maps-group="group-1">
+						<p>Newtown</p>
+					</li>
+				</div>
+			</ul>
+        </div>
+	</div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkc_6jFywGb4DI5LwLgqVxQI3qmw8jEn0&callback=initMap" async></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+    let map, infoWindows = [], allMarkers = []
+
+	function initMap() {
+		var stylers = [{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+						"saturation": 36
+					},
+					{
+						"color": "#333333"
+					},
+					{
+						"lightness": 40
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [{
+						"visibility": "on"
+					},
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 16
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [{
+					"visibility": "off"
+				}]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.fill",
+				"stylers": [{
+						"color": "#fefefe"
+					},
+					{
+						"lightness": 20
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.stroke",
+				"stylers": [{
+						"color": "#fefefe"
+					},
+					{
+						"lightness": 17
+					},
+					{
+						"weight": 1.2
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "administrative.neighborhood",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "administrative.land_parcel",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#ebf7f5"
+					},
+					{
+						"lightness": 20
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "labels.text",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "labels.text.stroke",
+				"stylers": [{
+					"color": "#ffffff"
+				}]
+			},
+			{
+				"featureType": "landscape.man_made",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "landscape.natural",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#f5f5f5"
+					},
+					{
+						"lightness": 21
+					}
+				]
+			},
+			{
+				"featureType": "poi.attraction",
+				"elementType": "geometry.fill",
+				"stylers": [{
+					"color": "#75bfa6"
+				}]
+			},
+			{
+				"featureType": "poi.business",
+				"elementType": "geometry.fill",
+				"stylers": [{
+					"color": "#daeae7"
+				}]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#dedede"
+					},
+					{
+						"lightness": 21
+					}
+				]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry.fill",
+				"stylers": [{
+					"color": "#cae9d8"
+				}]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#46a487"
+				}]
+			},
+			{
+				"featureType": "poi.sports_complex",
+				"elementType": "geometry.fill",
+				"stylers": [{
+					"color": "#75bfa6"
+				}]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.fill",
+				"stylers": [{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 17
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.stroke",
+				"stylers": [{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 29
+					},
+					{
+						"weight": 0.2
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 18
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "road.local",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 16
+					}
+				]
+			},
+			{
+				"featureType": "road.local",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#357c66"
+				}]
+			},
+			{
+				"featureType": "transit",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#f2f2f2"
+					},
+					{
+						"lightness": 19
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "geometry",
+				"stylers": [{
+						"color": "#46a487"
+					},
+					{
+						"lightness": 17
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "labels.text.fill",
+				"stylers": [{
+					"color": "#ffffff"
+				}]
+			},
+			{
+				"featureType": "water",
+				"elementType": "labels.text.stroke",
+				"stylers": [{
+					"color": "#46a487"
+				}]
+			}
+		]
+		const latitude = -33.8384188
+		const longitude = 150.9018986
+		map = new google.maps.Map(document.getElementById("map"), {
+			center: new google.maps.LatLng(latitude, longitude),
+			zoom: 20,
+			styles: stylers
+		});
+
+		pinLocation({
+			title: 'Proxima',
+			link: 'https://goo.gl/maps/ihZXUM4AEkAthCXX7',
+			latitude,
+			longitude,
+			group: null,
+			icon: `/wp-content/uploads/2022/01/location.png`,
+			_self: null
+		})
+	}
+
+	function pinLocation({
+		icon,
+		latitude,
+		longitude,
+		title,
+		link,
+		_self,
+		group
+	}) {
+		const marker = new google.maps.Marker({
+			position: new google.maps.LatLng(latitude, longitude),
+			icon,
+			map,
+			animation: google.maps.Animation.DROP
+		})
+		const infowindow = new google.maps.InfoWindow({
+			content: `<h5>${title || ''}</h5><a target='_blank' href="${link}">More Info</a>`
+		});
+		infoWindows.push(infowindow)
+
+		if (group != null) allMarkers[group].push(marker)
+		if (_self) _self.addEventListener('click', () => {
+			openPopup(true)
+			document.getElementById("map").scrollIntoView({
+				behavior: 'smooth'
+			})
+		});
+		marker.addListener("click", openPopup);
+
+
+		function openPopup(focus) {
+			if (marker.getMap()) {
+				infoWindows.forEach(wnd => wnd.close())
+				infowindow.open({
+					anchor: marker,
+					map,
+					shouldFocus: focus,
+				});
+			}
+		}
+	}
+
+	window.addEventListener('load', function() {
+		var pins_group_container = document.querySelectorAll('.pins-group')
+		for (let j = 0; j < pins_group_container.length; j++) {
+			var pins_group = pins_group_container[j].querySelectorAll('li')
+			var icon = pins_group_container[j].querySelector('img').src
+			var title = pins_group_container[j].querySelector('h4')
+			allMarkers.push([])
+			title.addEventListener('click', function() {
+				allMarkers.forEach(m => m.forEach(n => n.setMap(null)))
+				allMarkers[j].forEach(m => {
+					m.setAnimation(google.maps.Animation.DROP);
+					m.setMap(map)
+				})
+				document.getElementById("map").scrollIntoView({
+					behavior: 'smooth'
+				})
+				infoWindows.forEach(wnd => wnd.close())
+			})
+			for (let i = 0; i < pins_group.length; i++) {
+				const pin = pins_group[i]
+				pinLocation({
+					title: pin.innerText,
+					link: pin.getAttribute('maps-direction'),
+					latitude: pin.getAttribute('maps-lat'),
+					longitude: pin.getAttribute('maps-long'),
+					group: j,
+					icon,
+					_self: pin
+				})
+			}
+		}
+		document.querySelector('.see-all').addEventListener('click', function() {
+			allMarkers.forEach((m, i) => {
+				m.forEach(n => {
+					n.setMap(null)
+					n.setAnimation(google.maps.Animation.DROP);
+					setTimeout(() => n.setMap(map), 50 * i)
+				})
+			})
+			infoWindows.forEach(wnd => wnd.close())
+			document.getElementById("map").scrollIntoView({
+				behavior: 'smooth'
+			})
+		})
+
+	})
+    </script>
+</body>
+</html>

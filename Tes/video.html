@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            height: fit-content;
+            width: fit-content;
+        }
+
+        div::after {
+            content: '';
+            background-image: url('Group23895@2x.jpg');
+            background-size: cover;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        div:hover::after {
+            opacity: 0;
+        }
+    </style>
+    <script>
+
+        function play() {
+            const frame = document.querySelector("iframe")
+            frame.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
+        }
+
+        function pause() {
+            const frame = document.querySelector("iframe")
+            frame.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+        }
+
+        function stop() {
+            const frame = document.querySelector("iframe")
+            setTimeout(() => {
+                frame.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*')
+            }, 400);
+        }
+
+        function mute() {
+            const frame = document.querySelector("iframe")
+            frame.contentWindow.postMessage('{"event":"command","func":"' + 'mute' + '","args":""}', '*')
+        }
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div onmouseover="play()" onmouseout="stop()">
+        <iframe class="youtube-video" width="726" height="330"
+        src="https://www.youtube.com/embed/DK3SrLuOnPA?enablejsapi=1&controls=0&disablekb=1&fs=0&rel=0&modestbranding=0&showinfo=0&mute=1"
+        title="J Global Academy" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>

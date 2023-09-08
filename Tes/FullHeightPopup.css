@@ -1,0 +1,21 @@
+#elementor-popup-modal-102 #popup-section,
+#elementor-popup-modal-102 .elementor-row,
+#elementor-popup-modal-102 #popup-section > .elementor-container{
+    height: inherit;
+}
+
+#elementor-popup-modal-102 .elementor-widget-wrap {
+    align-content: space-between;
+}
+
+#elementor-popup-modal-102 .custom-iconlist {
+    margin-top: auto;
+}
+
+.elementor-location-popup,
+.elementor-location-popup > div,
+.elementor-location-popup > div > div,
+.elementor-location-popup > div > div > section,
+.elementor-location-popup > div > div > section > .elementor-container{
+    height: inherit;
+}

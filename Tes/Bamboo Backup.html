@@ -1,0 +1,14 @@
+document.querySelector('#comment-section h3').textContent = "Leave a reply"
+
+document.querySelectorAll('#comment-section .input-group:not(.comment-form-comment)').forEach(inputGroup => {
+    const label = document.createElement('label')
+    label.textContent = inputGroup.querySelector('input')?.placeholder || ''
+    label.for = inputGroup.querySelector('input')?.name || ''
+    inputGroup.prepend(label)
+})
+
+const comment = document.querySelector('#comment-section .input-group.comment-form-comment')
+const label = document.createElement('label')
+label.for = comment.querySelector('textarea').name
+label.textContent = "Comment"
+comment.prepend(label)
