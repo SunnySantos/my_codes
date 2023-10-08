@@ -1,0 +1,13 @@
+@media screen and (max-width: 980px) {
+    #custom-menu .et_pb_menu_inner_container, 
+    .et_pb_column--with-menu, 
+    #main-header .et_pb_row--with-menu, 
+    #custom-menu, 
+    #main-header .mobile_nav {
+        position: static;
+    }
+
+    #custom-menu ul.sub-menu {
+        width: 100%;
+    }
+}
